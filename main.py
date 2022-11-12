@@ -1,4 +1,5 @@
 import pymongo
+import re
 
 cluster = pymongo.MongoClient("mongodb+srv://username:2907@cluster0.h4uost6.mongodb.net/?retryWrites=true&w=majority")
 db = cluster["test"]
@@ -18,7 +19,13 @@ def delUser(id):
     usersCol.delete_one({"id": id})
 
 def sortEvents(skillList):
-    things = eventsCol.find({"skills" : {"$in": skillList}})
-    for stuff in things:
+    events = eventsCol.find({"skills" : {"$in": skillList}})
+    for stuff in events:
         print(stuff)
-    return things
+    return events
+
+def searchEventByName(eventName):
+    events = eventsCol.find({"name": re.compile(eventName, re.IGNORECASE)})
+    for t in events:
+        print(t)
+    return events

@@ -11,3 +11,10 @@ def addUser(data):
 
 def addEvent(data):
     eventsCol.insert_one(data)
+
+def delEvent(name):
+    eventsCol.delete_one({"name" : name})
+
+def delUser(id):
+    usersCol.delete_one({"id": id})
+

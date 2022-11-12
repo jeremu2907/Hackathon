@@ -1,11 +1,31 @@
 import pymongo
-from pymongo import MongoClient
+import re
 
-cluster = MongoClient("mongodb+srv://username:2907@cluster0.h4uost6.mongodb.net/?retryWrites=true&w=majority")
+cluster = pymongo.MongoClient("mongodb+srv://username:2907@cluster0.h4uost6.mongodb.net/?retryWrites=true&w=majority")
 db = cluster["test"]
-collection = db["test"]
+usersCol = db["users"]
+eventsCol = db["events"]
 
-event0 = {"event": "Grass touching", "place":"ECSW"}
-event1 = {"event": "Grass eating", "place":"ECSS"}
-collection.insert_one(event0)
-collection.insert_one(event1)
+def addEvent(data):
+    eventsCol.insert_one(data)
+
+def delEvent(name):
+    eventsCol.delete_one({"name" : name})
+
+def addUser(data):
+    usersCol.insert_one(data)
+
+def delUser(id):
+    usersCol.delete_one({"id": id})
+
+def sortEvents(skillList):
+    events = eventsCol.find({"skills" : {"$in": skillList}})
+    for stuff in events:
+        print(stuff)
+    return events
+
+def searchEventByName(eventName):
+    events = eventsCol.find({"name": re.compile(eventName, re.IGNORECASE)})
+    for t in events:
+        print(t)
+    return events

@@ -5,6 +5,7 @@ Format of user JSON
 
 user = {
   "name" : (string),
+  "id" : (string),
   "age" : (int),
   "contact" : (json) {
     "email" : (string),

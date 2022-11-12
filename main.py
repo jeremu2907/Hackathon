@@ -22,5 +22,3 @@ def sortEvents(skillList):
     for stuff in things:
         print(stuff)
     return things
-
-sortEvents(["animals", "finance"])

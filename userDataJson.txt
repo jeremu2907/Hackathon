@@ -1,0 +1,26 @@
+(data type)
+[array of type]
+
+Format of user JSON
+
+user = {
+  "name" : (string),
+  "age" : (int),
+  "contact" : (json) {
+    "email" : (string),
+    "phone" : (string)
+  },
+  "interest" : [string],
+  "bio" : "string:
+}
+
+Format of event JSON
+
+event = {
+  "name" : (string),
+  "organizer" : (string),
+  "time" : UNIX timestamp,
+  "location" : (string),
+  "description" : (string),
+  "skills" : [string]
+}

@@ -187,4 +187,15 @@ label{
 .listing-description{
     width:100%;
 }
+#searchBox{
+    margin-left:10px;
+}
+#search{
+    border: 0;
+    transition: color 0.5s;
+    margin-left: 10px
+}
 
+#search:hover{
+    color: rgb(4, 57, 80);
+}

@@ -1,7 +1,10 @@
 // import fetch from "node-fetch";
+// Server: 45.79.14.63:8000
+//Local: 45.79.14.63:8000
+
 
 function sortEvent(skill){
-    let request = "http://127.0.0.1:8000/sortEvent/?";
+    let request = "http://45.79.14.63:8000/sortEvent/?";
     for(let i = 0; i < skill.length; i++){
         request += "skill=" + skill[i];
         if(skill.length - i > 1)
@@ -24,7 +27,7 @@ function addUser(){
     let bio = document.getElementById("bio").value;
 
     let request = 
-        "http://127.0.0.1:8000/addUser/?" +
+        "http://45.79.14.63:8000/addUser/?" +
         "name=" + name + "&" +
         "age=" + age + "&" +
         "email=" + email + "&" +
@@ -36,8 +39,17 @@ function addUser(){
         if(interestList[i].checked === true){
             request += "&interest=" + interestList[i].id;
         }
-    console.log(request)
     fetch(request)
+    .then(() => {
+        request = "http://45.79.14.63:8000/searchUserName/?name=" + name;
+        fetch(request)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            window.localStorage.setItem("loggedUser", JSON.stringify(data[0]))
+        })
+    })
 }
 
 function addEvent(){
@@ -48,7 +60,7 @@ function addEvent(){
     let position = decument.getElementById("position").value;
     let description = document.getElementById("description").value;
 
-    fetch("http://127.0.0.1:8000/addEvent/?" +
+    fetch("http://45.79.14.63:8000/addEvent/?" +
         "name=" + name + "&" +
         "organizer=" + organizer + "&" +
         "time=" + time + "&" +
@@ -60,13 +72,13 @@ function addEvent(){
 
 function delEvent(){
     let name = document.getElementById("deleteEvent").value
-    fetch("http://127.0.0.1:8000/delEvent/?name=" + name)
+    fetch("http://45.79.14.63:8000/delEvent/?name=" + name)
 }
 
 function searchByEventName(){
     document.getElementById("listing-container").innerHTML = "...Loading"
     let name = document.getElementById("searchBox").value;
-    fetch("http://127.0.0.1:8000/searchEventByName/?name=" + name)
+    fetch("http://45.79.14.63:8000/searchEventByName/?name=" + name)
     .then(response => response.json())
     .then(data => {
         document.getElementById("listing-container").innerHTML = ""
@@ -85,4 +97,8 @@ function searchByEventName(){
         }
         // console.log(data);return data
     })
+}
+
+function profile(){
+    let request = "http://45.79.14.63:8000/searchUserName/?name"
 }

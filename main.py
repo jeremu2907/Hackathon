@@ -33,7 +33,8 @@ async def addUser(name: str = "", age: int = 0, email: str = "No email", phone: 
     print(data)
     usersCol.insert_one(data)
 
-def delEvent(name):
+@app.get("/delEvent/")
+async def delEvent(name):
     eventsCol.delete_one({"name" : name})
 
 def addEvent(data):

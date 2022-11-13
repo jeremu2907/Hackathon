@@ -1,6 +1,7 @@
 import pymongo
 import re
 import random
+from bson.json_util import dumps, loads
 import json
 
 from typing import Union
@@ -37,8 +38,16 @@ async def addUser(name: str = "", age: int = 0, email: str = "No email", phone: 
 async def delEvent(name):
     eventsCol.delete_one({"name" : name})
 
-def addEvent(data):
-    eventsCol.insert_one(data)
+@app.get("/addEvent/")
+async def addEvent(name, organizer, time, location, description):
+    event = {
+        "name" : name,
+        "organizer" : organizer,
+        "time" : time,
+        "location" : location,
+        "description" : description,
+    }
+    eventsCol.insert_one(event)
 
 def sortEvents(skillList):
     events = eventsCol.find({"skills" : {"$in": skillList}})
@@ -49,6 +58,11 @@ def sortEvents(skillList):
 @app.get("/searchEventByName/")
 async def searchEventByName(name):
     events = eventsCol.find({"name": re.compile(name, re.IGNORECASE)})
-    for t in events:
-        print(t)
-    return events
+    response = dumps(list(events))
+    return json.loads(response)
+
+@app.get("/searchUserName/")
+async def searchUserName(name):
+    users = usersCol.find({"name": re.compile(name, re.IGNORECASE)})
+    response = dumps(list(users))
+    return json.loads(response)

@@ -119,6 +119,11 @@ function searchByEventName(){
 // logIn()
 // Loads localstorage pseudo log in
 function logIn(){
+    document.getElementById("userName").innerHTML = "";
+    document.getElementById("userEmail").innerHTML = "Email: ";
+    document.getElementById("userPhone").innerHTML = "Phone: ";
+    document.getElementById("userInterest").innerHTML = "";
+    document.getElementById("userBio").innerHTML = "";
     setTimeout(() => {
         var user = JSON.parse(window.localStorage.getItem("loggedUser"))
         if(user !== null){
@@ -134,15 +139,6 @@ function logIn(){
             }
         }
     },1000);
-    // try{
-    // document.getElementById("userName").innerHTML = "";
-    // document.getElementById("userEmail").innerHTML = "Email: ";
-    // document.getElementById("userPhone").innerHTML = "Phone: ";
-    // document.getElementById("userInterest").innerHTML = "";
-    // document.getElementById("userBio").innerHTML = "";
-    // } catch {
-    //     console.log("not")
-    // }
 }
 
 function logOut(){

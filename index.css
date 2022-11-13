@@ -1,0 +1,145 @@
+/* Navbar container */
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+body{
+    background-color: #eff2f1;
+}
+.navbar {
+    overflow: hidden;
+    background-color: rgb(196, 67, 28);
+    font-family: Arial;
+    border-radius: 25px;
+  }
+  
+  /* Links inside the navbar */
+  .navbar a {
+    float: right;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* The dropdown container */
+  .dropdown {
+    float: none;
+    overflow: hidden;
+  }
+  
+  /* Dropdown button */
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #69d3b3;
+    color:rgb(4, 57, 80);
+    transition: .3s;
+
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 25px;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: rgb(4, 57, 80);
+    color: beige;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+/* profile.html */
+.hello{
+    text-align: center;
+}
+h1{
+    font-size: 100px;
+}
+h2{
+    color: #73d8ba;
+}
+h3{
+    color: rgb(1, 196, 98);
+}
+.waddle-logo{
+    font-family: 'Fugaz One', cursive;
+    color: rgb(4, 57, 80);
+}
+.sign-up{
+    display: inline;
+}
+.login{
+    display: inline;
+
+}
+/* findOpportunities */
+.search-section{
+    float: center;
+}
+.opportunity-listing{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rbga(0,0,0,0);
+
+}
+.opportunity-listing > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    text-align: center;
+    line-height: auto;
+}
+.listing-position{
+    width: 72%;
+    font-size: 32px;
+    text-align: left;
+}
+.listing-location{
+    width: 22%;
+}
+.listing-host{
+    width: 57%;
+}
+.listing-time{
+    width: 17%;
+
+}
+.listing-date{
+    width: 17%;
+}
+.listing-skills{
+    width: 100%;
+}
+.listing-description{
+    width:100%;
+}
+

@@ -46,8 +46,9 @@ def sortEvents(skillList):
         print(stuff)
     return events
 
-def searchEventByName(eventName):
-    events = eventsCol.find({"name": re.compile(eventName, re.IGNORECASE)})
+@app.get("/searchEventByName/")
+async def searchEventByName(name):
+    events = eventsCol.find({"name": re.compile(name, re.IGNORECASE)})
     for t in events:
         print(t)
     return events

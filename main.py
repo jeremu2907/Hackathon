@@ -61,3 +61,8 @@ async def searchEventByName(name):
     response = dumps(list(events))
     return json.loads(response)
 
+@app.get("/searchUserName/")
+async def searchUserName(name):
+    users = usersCol.find({"name": re.compile(name, re.IGNORECASE)})
+    response = dumps(list(users))
+    return json.loads(response)

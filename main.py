@@ -4,6 +4,7 @@ import random
 from bson.json_util import dumps, loads
 import json
 
+
 from typing import Union
 
 from fastapi import FastAPI

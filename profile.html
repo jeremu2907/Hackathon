@@ -24,23 +24,25 @@
         </div>
         <section id="loggedOut">
         <div class="default-margin">
-          <h2>Create your Account:</h2>
+          <h2 class="page-title">Create your Account:</h2>
           <div class="enter-info">
             <h3>Name:</h3>
-          
-            <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname" ><br><br>
-            <label for="lname">Last name:</label>
-            <input type="text" id="lname" name="lname"><br><br>
+            <div class= "entries-subsection">
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname" ><br><br>
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+            </div>
             
-          
-            <label for = "age" >Age:</label>
-            <input type = "text" id="age" age = "age"><br><br>
-            
-              <h3>Personal Information</h3>
-            
+
+              <h3>Personal Information:</h3>
+              <div class= "entries-subsection">
+
               <label for = "number" >Mobile Number:</label>
               <input type = "text" id = "phone" name = "number"><br><br>
+              
+              <label for = "age" >Age:</label>
+              <input type = "text" id="age" age = "age"><br><br>
 
               <label for = "email" >Email:</label>
               <input type = "text" id = "email" name = "email"><br><br>
@@ -63,6 +65,8 @@
               </div>
 
               <button id="submit-profile" class="submit-button" onclick="addUser()">Submit</button>
+              </div>
+
             </div>
           </div>
         </div>

@@ -1,18 +1,29 @@
 /* Navbar container */
 @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@600&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 
 body{
     background-color: #eff2f1;
     width: 100vw;
+    overflow: auto;
+    margin-left:-2px;
+    margin-right:-2px;
+    margin-top: 10px;
 }
 .navbar {
     overflow: hidden;
     background-color: rgb(196, 67, 28);
-    font-family: Arial;
     border-radius: 25px;
+    width: 95%;
+    margin: auto;
   }
   
   /* Links inside the navbar */
@@ -26,16 +37,23 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 700;
+
   }
   
   /* The dropdown container */
   .dropdown {
     float: none;
     overflow: hidden;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 700;
   }
   
   /* Dropdown button */
   .dropdown .dropbtn {
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 700;
     font-size: 16px;
     border: none;
     outline: none;
@@ -62,7 +80,7 @@ body{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    border-radius: 25px;
+    /* border-radius: 25px; */
   }
   
   /* Links inside the dropdown */
@@ -96,19 +114,28 @@ body{
 .hello{
     text-align: center;
     padding-top: 100px;
+    
+}
+#blurb{
+    margin:50px;
+}
+#login{
+    color: rgb(0, 140, 255);
 }
 h1{
     font-size: 100px;
 }
 h2{
-    color: #73d8ba;
+    color: #499e85;
     font-family: 'Arvo', serif;
-
     font-size: 45px;
 }
 h3{
-    font-size: 30px;;
-    color: rgb(1, 196, 98);
+    font-size: 32px;
+    color: rgb(0, 163, 81);
+}
+p{
+
 }
 input[type=text] {
     width: 50%;
@@ -116,12 +143,63 @@ input[type=text] {
     margin: 8px 0;
     box-sizing: border-box;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     border-bottom: 2px solid darkblue;
     font-size: 15px;
 }
-input[type=checkbox]{
+#searchBox {
+    background-color: #73d8ba;
+    width: 50%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 25px;
     font-size: 20px;
+    color:rgb(3, 37, 52);
+    font-family: 'Inria Sans', sans-serif;
+    border: none;
+}
+#search-label{
+    font-size: 35px;
+    text-align: center;
+}
+.submit-button{
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 30px;
+    border: none;
+    color: darkgreen;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Fugaz One', cursive;
+
+}
+.submit-button:hover{
+    color: yellowgreen;
+    transition: .1s;
+}
+.search-section{
+    margin: auto;
+    width: auto;
+    padding-top: 100px;
+    background-color: rgb(226, 246, 254);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input[type=checkbox]{
+    font-size: 25px;
+    font-family: 'Nunito', sans-serif;
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    padding: 10px;
+    margin: 10px;
+
 }
 .waddle-logo{
     font-family: 'Fugaz One', cursive;
@@ -143,52 +221,109 @@ label{
 .default-margin{
     margin: 50px 50px;
 }
+.page-title{
+    padding-left: 75px;
+}
+.entries-subsection{
+    padding-left: 50px;
+
+}
 .enter-info{
-    margin:50px 150px;
-    background-color: rgb(211, 229, 237);
+    margin: 0px 150px;
+    background-color: rgb(226, 246, 254);
     padding: 75px;
     border-radius: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(196, 67, 28);
 }
 /* findOpportunities */
-.search-section{
-    float: center;
-}
+/* listing-container{
+    padding: 50px;
+} */
 .opportunity-listing{
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: rbga(0,0,0,0);
+    background-color: whitesmoke;
+    margin: 25px 50px;
+    border-style: solid;
+    border-color: #73d8ba;
+    border-radius: 25px;
+    padding: 0px;
+
+}
+.opportunity-listing:hover{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgb(202, 237, 132);
+    transition: .3s;
+    margin: 25px 50px;
+    border-style: solid;
+    border-radius: 25px;
+    padding: 20px;
 
 }
 .opportunity-listing > div {
-    background-color: #f1f1f1;
-    margin: 10px;
-    text-align: center;
+    /* margin: 10px; */
+    /* text-align: center; */
     line-height: auto;
 }
 .listing-position{
+    color: #499e85;
+    font-family: 'Arvo', serif;
+    font-size: 45px;
+    font-weight: 700;
+    font-style: italic;
     width: 72%;
     font-size: 32px;
     text-align: left;
+    margin: 20px 0px 3px 20px;
 }
 .listing-location{
+    font-family: 'Inria Sans', sans-serif;
     width: 22%;
+    color: rgb(196, 67, 28);
+    font-size: 20px;
+    margin: 20px 20px;
+    text-align: right;
 }
 .listing-host{
-    width: 57%;
+    width: 72%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: -10px;
+    margin-left: 20px;
+    color: navy;
+    
 }
 .listing-time{
-    width: 17%;
+    font-family: 'Nunito', sans-serif;
+    width: 12%;
+    text-align: right;
+    margin-right: 0px;
 
 }
 .listing-date{
-    width: 17%;
+    font-family: 'Nunito', sans-serif;
+    width: 12%;
+    text-align: left;
+    margin-left: 0px;
 }
 .listing-skills{
     width: 100%;
+    margin: 5px 3px 0px 20px;
+    color: rgb(0, 140, 255);
+    font-size: 18px;
+    font-family: 'Sono', sans-serif;
 }
 .listing-description{
+    font-family: 'Inria Sans', sans-serif;
     width:100%;
+    margin: 0px 3px 20px 20px;
+
 }
 #searchBox{
     margin-left:10px;

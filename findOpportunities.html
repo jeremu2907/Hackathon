@@ -23,10 +23,12 @@
       </div>
       
     <div class="search-section">
-      <label for="search-input">Search Opportunities</label>
-      <input type="text" id="searchBox"><button onclick="searchByEventName()" id="search">Search</button><br><br>
+      <label for="search-input" id="search-label"> Search Opportunities: </label>
+      <input type="text" id="searchBox">
+      <button id="submit-button"  class="submit-button" onclick="searchByEventName()">search</button><br><br>
+
       <div id="search-intrests" class="find-intrests"></div>
-      <input type="checkbox">test<br>
+      <!-- <input type="checkbox">test<br> -->
     </div>
 
     <div id="listing-container">

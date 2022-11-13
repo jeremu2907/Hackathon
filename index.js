@@ -1,7 +1,7 @@
 // import fetch from "node-fetch";
 
 function sortEvent(skill){
-    let request = "http://127.0.0.1:8000/sortEvent/?";
+    let request = "http://45.79.14.63:8000/sortEvent/?";
     for(let i = 0; i < skill.length; i++){
         request += "skill=" + skill[i];
         if(skill.length - i > 1)
@@ -59,7 +59,7 @@ function delEvent(){
 function searchByEventName(){
     document.getElementById("listing-container").innerHTML = "...Loading"
     let name = document.getElementById("searchBox").value;
-    fetch("http://127.0.0.1:8000/searchEventByName/?name=" + name)
+    fetch("http://45.79.14.63:8000/searchEventByName/?name=" + name)
     .then(response => response.json())
     .then(data => {
         document.getElementById("listing-container").innerHTML = ""

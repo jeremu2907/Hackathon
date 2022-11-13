@@ -1,4 +1,7 @@
 // import fetch from "node-fetch";
+// Server: 45.79.14.63:8000
+//Local: 45.79.14.63:8000
+
 
 function sortEvent(skill){
     let request = "http://45.79.14.63:8000/sortEvent/?";
@@ -16,21 +19,52 @@ function sortEvent(skill){
 }
 
 function addUser(){
-    let name = document.getElementById("nameUser").value
+    let name = document.getElementById("fname").value +" "+ document.getElementById("lname").value;
     let age = document.getElementById("age").value;
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
-    let interest = document.getElementById("interest").value;
+    // let interest = document.getElementById("interest").value;
     let bio = document.getElementById("bio").value;
 
-    fetch("http://127.0.0.1:8000/addUser/?" +
+    let request = 
+        "http://45.79.14.63:8000/addUser/?" +
         "name=" + name + "&" +
         "age=" + age + "&" +
         "email=" + email + "&" +
         "phone=" + phone + "&" +
-        "interest=" + interest + "&" +
-        "bio=" + bio
-    )
+        // "interest=" + interest + "&" +
+        "bio=" + bio;
+
+    let interest = [];
+    let interestList = document.getElementById("interest-selector").children;
+    for(let i = 0; i < interestList.length; i++)
+        if(interestList[i].checked === true){
+            request += "&interest=" + interestList[i].id;
+            interest.push(interestList[i].id)
+        }
+
+    let user = {
+        "name": name,
+        "age": age,
+        "email": email,
+        "phone": phone,
+        "bio": bio,
+        "interest" : interest
+    }
+
+    fetch(request)
+    .then(() => {
+        request = "http://45.79.14.63:8000/searchUserName/?name=" + name;
+        fetch(request)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            window.localStorage.removeItem("loggedUser")
+            window.localStorage.setItem("loggedUser", JSON.stringify(user))
+        })
+        .then(logIn())
+    })
 }
 
 function addEvent(){
@@ -41,7 +75,7 @@ function addEvent(){
     let position = decument.getElementById("position").value;
     let description = document.getElementById("description").value;
 
-    fetch("http://127.0.0.1:8000/addEvent/?" +
+    fetch("http://45.79.14.63:8000/addEvent/?" +
         "name=" + name + "&" +
         "organizer=" + organizer + "&" +
         "time=" + time + "&" +
@@ -53,7 +87,7 @@ function addEvent(){
 
 function delEvent(){
     let name = document.getElementById("deleteEvent").value
-    fetch("http://127.0.0.1:8000/delEvent/?name=" + name)
+    fetch("http://45.79.14.63:8000/delEvent/?name=" + name)
 }
 
 function searchByEventName(){
@@ -78,4 +112,34 @@ function searchByEventName(){
         }
         // console.log(data);return data
     })
+}
+
+logIn()
+// Loads localstorage pseudo log in
+function logIn(){
+    setTimeout(() => {
+        var user = JSON.parse(window.localStorage.getItem("loggedUser"))
+        if(user !== null){
+            document.getElementById("loggedOut").style.display = "none";
+            document.getElementById("loggedIn").style.display = "flex";
+
+            document.getElementById("userName").innerHTML = '<r style="color:rgb(50,50,50)">' + user.name + '</r>';
+            document.getElementById("userEmail").innerHTML += '<r style="color:rgb(50,50,50);font-family: `Montserrat, sans-serif`">' + user.email + '</r>';
+            document.getElementById("userPhone").innerHTML += '<r style="color:rgb(50,50,50);font-family: `Montserrat, sans-serif`">' + user.phone + '</r>';
+            document.getElementById("userBio").innerHTML += '<r style="color:rgb(50,50,50)">' + user.bio + '</r>';
+            for(let i = 0; i < user.interest.length; i++){
+                document.getElementById("userInterest").innerHTML += "<li>" + user.interest[i] + "</li>";
+            }
+        }
+    },1000);
+    document.getElementById("userName").innerHTML = "";
+    document.getElementById("userEmail").innerHTML = "Email: ";
+    document.getElementById("userPhone").innerHTML = "Phone: ";
+    document.getElementById("userInterest").innerHTML = "";
+    document.getElementById("userBio").innerHTML = "";
+}
+
+function logOut(){
+    document.getElementById("loggedOut").style.display = "block";
+    document.getElementById("loggedIn").style.display = "none";
 }

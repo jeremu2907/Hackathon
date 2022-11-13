@@ -1,6 +1,7 @@
 import pymongo
 import re
 import random
+from bson.json_util import dumps, loads
 import json
 
 from typing import Union
@@ -57,6 +58,6 @@ def sortEvents(skillList):
 @app.get("/searchEventByName/")
 async def searchEventByName(name):
     events = eventsCol.find({"name": re.compile(name, re.IGNORECASE)})
-    for t in events:
-        print(t)
-    return events
+    response = dumps(list(events))
+    return json.loads(response)
+

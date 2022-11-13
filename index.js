@@ -1,74 +1,81 @@
+// import fetch from "node-fetch";
 
-function sortEvent(){
-    let param = "";
+function sortEvent(skill){
+    let request = "http://127.0.0.1:8000/sortEvent/?";
+    for(let i = 0; i < skill.length; i++){
+        request += "skill=" + skill[i];
+        if(skill.length - i > 1)
+            request += "&";
+    }
     // get all selected skills
-    fetch("backendserver/sortEvent")
+    console.log(request)
+    fetch(request)
     .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        // do something about the data
-    })
+        return response.json()
+    }).then(data => {console.log(data); return data})
 }
 
 function addUser(){
-    let name = $("#nameUser").value;
-    let age = $("#age").value;
-    let email = $("#email").value;
-    let phone = $("#phone").valuel;
-    // let interest = $("interest").value;
-    let bio = $("#bio").value;
+    let name = document.getElementById("nameUser").value
+    let age = document.getElementById("age").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let interest = document.getElementById("interest").value;
+    let bio = document.getElementById("bio").value;
 
-    fetch("http://example.com/api/endpoint/?" +
+    fetch("http://127.0.0.1:8000/addUser/?" +
         "name=" + name + "&" +
         "age=" + age + "&" +
         "email=" + email + "&" +
         "phone=" + phone + "&" +
         "interest=" + interest + "&" +
-        "bio=" + bio + "&"
+        "bio=" + bio
+    )
+}
+
+function addEvent(){
+    let name = document.getElementById("nameEvent").value
+    let organizer = document.getElementById("organizer").value;
+    let time = document.getElementById("time").value;
+    let location = document.getElementById("location").value;
+    let position = decument.getElementById("position").value;
+    let description = document.getElementById("description").value;
+
+    fetch("http://127.0.0.1:8000/addEvent/?" +
+        "name=" + name + "&" +
+        "organizer=" + organizer + "&" +
+        "time=" + time + "&" +
+        "location=" + location + "&" +
+        "position=" + position + "&" +
+        "description=" + description
     )
 }
 
 function delEvent(){
-    let name = $('').value
-    fetch(`backendserver/delEvent?name=${name}`)
-    .then(response => response.json())
-    .then(data => {
-        // do something about the data
-    })
+    let name = document.getElementById("deleteEvent").value
+    fetch("http://127.0.0.1:8000/delEvent/?name=" + name)
 }
 
 function searchByEventName(){
-    let name = $('#searchBox').value
-    fetch(`backendserver/searchByEventName?name=${name}`)
+    document.getElementById("listing-container").innerHTML = "...Loading"
+    let name = document.getElementById("searchBox").value;
+    fetch("http://127.0.0.1:8000/searchEventByName/?name=" + name)
     .then(response => response.json())
-    .then(data => console.log(data))
-
-// fucntion to search by location send long and lat < parameters
-
-function formatEvent(){
-    // var newListing = document.createElement("div");
-
-    // newListing.innerHTML = 
-
-    // var eventPosition = document.getElementByClass.createElement("listing-position");
-
-
-    // // const eventLocation = document.getElementByClass.createElement("listing-location");
-    // // const eventHost = document.getElementByClass.createElement("listing-host");
-    // // const eventTime = document.getElementByClass.createElement("listing-time");
-    // // const eventDate = document.getElementByClass.createElement("listing-date");
-    // // const eventSkills = document.getElementByClass.createElement("listing-skills");
-    // // const eventDescription = document.getElementByClass.createElement("listing-description");
-
-    // const allListings = document.getElementById("the-listings");
-    // allListings.appendChild(para);
-
-
-
-
-
-
-
-
+    .then(data => {
+        document.getElementById("listing-container").innerHTML = ""
+        for(i in data){
+            console.log(i)
+            document.getElementById("listing-container").innerHTML += 
+                `<div class="opportunity-listing">
+                <div class="listing-position">Position: ` + data[i].position + `</div>
+                <div class="listing-location">location: ` + data[i].location + `</div>
+                <div class="listing-host">Host: ` + data[i].organizer + `</div>
+                <div class="listing-time">time: ` + data[i].time + `</div>
+                <div class="listing-date">date: ` + data[i].date + `</div>
+                <div class="listing-skills">skills: ` + data[i].skills + `</div>
+                <div class="listing-description">desc: ` + data[i].description + `</div>
+                </div>`
+        }
+        // console.log(data);return data
+    })
 }

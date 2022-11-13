@@ -68,19 +68,21 @@ function addUser(){
 }
 
 function addEvent(){
-    let name = document.getElementById("nameEvent").value
-    let organizer = document.getElementById("organizer").value;
-    let time = document.getElementById("time").value;
-    let location = document.getElementById("location").value;
-    let position = decument.getElementById("position").value;
-    let description = document.getElementById("description").value;
-
+    let name = document.getElementById("event-name").value
+    let organizer = document.getElementById("host-name").value;
+    let time = document.getElementById("time-input").value;
+    let location = document.getElementById("id-location").value;
+    let position = document.getElementById("position-name").value;
+    let date = document.getElementById("date-input").value;
+    let description = document.getElementById("descBox").value;
+    // console.log(description)
     fetch("http://45.79.14.63:8000/addEvent/?" +
         "name=" + name + "&" +
         "organizer=" + organizer + "&" +
         "time=" + time + "&" +
         "location=" + location + "&" +
-        "position=" + position + "&" +
+        "position=" + position + "&" + 
+        "date=" + date + "&" + 
         "description=" + description
     )
 }
@@ -114,7 +116,7 @@ function searchByEventName(){
     })
 }
 
-logIn()
+// logIn()
 // Loads localstorage pseudo log in
 function logIn(){
     setTimeout(() => {
@@ -132,11 +134,15 @@ function logIn(){
             }
         }
     },1000);
-    document.getElementById("userName").innerHTML = "";
-    document.getElementById("userEmail").innerHTML = "Email: ";
-    document.getElementById("userPhone").innerHTML = "Phone: ";
-    document.getElementById("userInterest").innerHTML = "";
-    document.getElementById("userBio").innerHTML = "";
+    // try{
+    // document.getElementById("userName").innerHTML = "";
+    // document.getElementById("userEmail").innerHTML = "Email: ";
+    // document.getElementById("userPhone").innerHTML = "Phone: ";
+    // document.getElementById("userInterest").innerHTML = "";
+    // document.getElementById("userBio").innerHTML = "";
+    // } catch {
+    //     console.log("not")
+    // }
 }
 
 function logOut(){

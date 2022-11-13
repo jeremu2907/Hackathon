@@ -27,6 +27,8 @@
 
                 <h2 class="page-title">Add Event:</h2>
                     <div class ="enter-info">
+                        <label for = "EventName" > Event Name: </label>
+                        <input type= "text" id = "event-name" name = "event-input"></input> <br><br>
                         <label for = "position" > Position: </label>
                         <input type= "text" id = "position-name" name = "postion-input"></input> <br><br>
                         <label for = "Host" > Host Name: </label>
@@ -43,7 +45,7 @@
                         <label for = "Time" > Time:</label>
                         <input type = "text" id = "time-input" name = "time-input"><br>
                         <p>Description</p>
-                        <textarea rows = "5" cols = "60" name = "description">
+                        <textarea id="descBox" rows = "5" cols = "60" name = "description">
                         </textarea><br>
 
                         <label for = "interest" > How would you desribe </label> <br>
@@ -57,7 +59,7 @@
                         <input type = checkbox> Cooking <br>
                         <input type = checkbox> Crafts <br>
                         <input type = checkbox> Clothes <br>
-                        <button id="submit-profile" class="submit-button" >submit</button>
+                        <button id="submit-profile" class="submit-button" onclick="addEvent()">submit</button>
 
                         
                     </div>

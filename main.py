@@ -60,11 +60,11 @@ async def delEvent(name):
     eventsCol.delete_one({"name" : name})
 
 @app.get("/addEvent/")
-async def addEvent(name, organizer, time, date, location, description, position):
+async def addEvent(name, organizer, time, date, location,position, description: str = "No description"):
     event = {
         "name" : name,
         "organizer" : organizer,
-        "time" : time,
+        "time" : time,  
         "date" : date,
         "location" : location,
         "description" : description,

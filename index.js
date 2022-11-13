@@ -16,21 +16,28 @@ function sortEvent(skill){
 }
 
 function addUser(){
-    let name = document.getElementById("nameUser").value
+    let name = document.getElementById("fname").value +" "+ document.getElementById("lname").value;
     let age = document.getElementById("age").value;
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
-    let interest = document.getElementById("interest").value;
+    // let interest = document.getElementById("interest").value;
     let bio = document.getElementById("bio").value;
 
-    fetch("http://127.0.0.1:8000/addUser/?" +
+    let request = 
+        "http://127.0.0.1:8000/addUser/?" +
         "name=" + name + "&" +
         "age=" + age + "&" +
         "email=" + email + "&" +
         "phone=" + phone + "&" +
-        "interest=" + interest + "&" +
-        "bio=" + bio
-    )
+        // "interest=" + interest + "&" +
+        "bio=" + bio;
+    interestList = document.getElementById("interest-selector").children;
+    for(let i = 0; i < interestList.length; i++)
+        if(interestList[i].checked === true){
+            request += "&interest=" + interestList[i].id;
+        }
+    console.log(request)
+    fetch(request)
 }
 
 function addEvent(){

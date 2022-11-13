@@ -29,3 +29,19 @@ function addUser(){
         "bio=" + bio + "&"
     )
 }
+
+function delEvent(){
+    let name = $('').value
+    fetch(`backendserver/delEvent?name=${name}`)
+    .then(response => response.json())
+    .then(data => {
+        // do something about the data
+    })
+}
+
+function searchByEventName(){
+    let name = $('#searchBox').value
+    fetch(`backendserver/searchByEventName?name=${name}`)
+    .then(response => response.json())
+    .then(data => console.log(data))
+}

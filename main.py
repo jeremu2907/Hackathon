@@ -3,6 +3,7 @@ import re
 import random
 import json
 
+
 from typing import Union
 
 from fastapi import FastAPI

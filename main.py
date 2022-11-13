@@ -33,7 +33,8 @@ async def addUser(name: str = "", age: int = 0, email: str = "No email", phone: 
     print(data)
     usersCol.insert_one(data)
 
-def delEvent(name):
+@app.get("/delEvent/")
+async def delEvent(name):
     eventsCol.delete_one({"name" : name})
 
 @app.get("/addEvent/")
@@ -53,8 +54,9 @@ def sortEvents(skillList):
         print(stuff)
     return events
 
-def searchEventByName(eventName):
-    events = eventsCol.find({"name": re.compile(eventName, re.IGNORECASE)})
+@app.get("/searchEventByName/")
+async def searchEventByName(name):
+    events = eventsCol.find({"name": re.compile(name, re.IGNORECASE)})
     for t in events:
         print(t)
     return events

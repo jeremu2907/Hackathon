@@ -36,8 +36,16 @@ async def addUser(name: str = "", age: int = 0, email: str = "No email", phone: 
 def delEvent(name):
     eventsCol.delete_one({"name" : name})
 
-def addEvent(data):
-    eventsCol.insert_one(data)
+@app.get("/addEvent/")
+async def addEvent(name, organizer, time, location, description):
+    event = {
+        "name" : name,
+        "organizer" : organizer,
+        "time" : time,
+        "location" : location,
+        "description" : description,
+    }
+    eventsCol.insert_one(event)
 
 def sortEvents(skillList):
     events = eventsCol.find({"skills" : {"$in": skillList}})

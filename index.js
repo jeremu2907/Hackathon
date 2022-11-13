@@ -11,14 +11,12 @@ function sortEvent(){
 }
 
 function addUser(){
-    // if use jquery``  
-    // $('.id').value :)
-    let name = $("id").value;
-    let age = $("id").value;
-    let email = $("id").value;
-    let phone = $("id").valuel;
-    let interest = $("id").value;
-    let bio = $("id").value;
+    let name = $("#nameUser").value;
+    let age = $("#age").value;
+    let email = $("#email").value;
+    let phone = $("#phone").valuel;
+    // let interest = $("interest").value;
+    let bio = $("#bio").value;
 
     fetch("http://example.com/api/endpoint/?" +
         "name=" + name + "&" +

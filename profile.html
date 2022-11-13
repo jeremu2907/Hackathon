@@ -6,7 +6,8 @@
         <script src="index.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     </head>
-    <body>
+    <body id="profile-body" >
+      
         <div class="navbar">
             <a href="./index.html">Home</a>
             <a href="./profile.html">Profile</a>
@@ -21,7 +22,7 @@
             </div>
           </div>
         </div>
-
+        <section id="loggedOut">
         <div class="default-margin">
           <h2>Create your Account:</h2>
           <div class="enter-info">
@@ -64,8 +65,22 @@
               <button id="submit-profile" class="submit-button" onclick="addUser()">Submit</button>
             </div>
           </div>
-  
-
         </div>
+      </section>
+      <section id="loggedIn" style="display: none">
+        <div id="card">
+          <div>
+            <img src="https://picsum.photos/200" alt="account img" style="border-radius: 100px">
+          </div>
+          <h1 id="userName"></h1>
+          <h2 id="userEmail">Email: </h2>
+          <h2 id="userPhone">Phone: </h2>
+          <h2>Bio</h2>
+          <p id="userBio" style="margin-right:auto; border-left: 2px #73d8ba solid; padding-left: 10px"></p>
+          <h2>My Interests:</h2>
+          <ul id="userInterest"></ul>
+          <button onClick="logOut()">Log out</button>
+        </div>
+      </section>
     </body>
 </html>

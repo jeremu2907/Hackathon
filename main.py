@@ -38,11 +38,12 @@ def read_root():
     return {"Hello": "World"}
 
 @app.get("/addUser/")
-async def addUser(name: str = "", age: int = 0, email: str = "No email", phone: str = "No phone number", bio: str = "Nothing here yet"):
+async def addUser(name: str = "", age: int = 0, email: str = "No email", phone: str = "No phone number", interest: list[str] | None = Query(default=None), bio: str = "Nothing here yet"):
     data ={
         "name" : name,
         "id" : str(random.randint(0,9999999999999)),
         "age" : age,
+        "interest" : interest,
         "contact" : {
             "email" : email,
             "phone" : phone
